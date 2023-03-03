@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 1288753296153761020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.456, y: 1.886, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 1}
+  m_LocalScale: {x: 0.25, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1288753294458704132}
@@ -345,7 +345,7 @@ Transform:
   - {fileID: 1288753294323815671}
   - {fileID: 1288753295449044889}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1288753296153761017
 SpriteRenderer:
