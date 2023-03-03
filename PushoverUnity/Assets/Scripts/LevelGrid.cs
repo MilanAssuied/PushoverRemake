@@ -7,7 +7,7 @@ public class LevelGrid
     private static readonly float ScreenWidth = Screen.width;
         
     private static readonly int MaxNumberOfRows = 10;
-    private static readonly int MaxNumberOfColumns = 20;
+    private static readonly int MaxNumberOfColumns = 22;// this is where we need to look
     private static readonly int RowSize = Mathf.RoundToInt(ScreenHeight / MaxNumberOfRows);
     private static readonly int ColumnSize = Mathf.RoundToInt(ScreenWidth / MaxNumberOfColumns);
     
