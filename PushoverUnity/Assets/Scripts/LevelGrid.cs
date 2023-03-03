@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class LevelGrid
 {
-    private static readonly float _screenHeight = Screen.height;
-    private static readonly float _screenWidth = Screen.width;
+    private static readonly float ScreenHeight = Screen.height;
+    private static readonly float ScreenWidth = Screen.width;
         
-    private static readonly int _maxNumberOfRows = 10;
-    private static readonly int _maxNumberOfColumns = 10;
-    
-    private static int _rowSize = Mathf.RoundToInt(_screenHeight / _maxNumberOfRows);
-    private static int _columnSize = Mathf.RoundToInt(_screenWidth / _maxNumberOfColumns);
+    private static readonly int MaxNumberOfRows = 40;
+    private static readonly int MaxNumberOfColumns = 40;
+    private static readonly int RowSize = Mathf.RoundToInt(ScreenHeight / MaxNumberOfRows);
+    private static readonly int ColumnSize = Mathf.RoundToInt(ScreenWidth / MaxNumberOfColumns);
     
     private static LevelGrid _instance;
     public static LevelGrid instance
@@ -23,8 +22,8 @@ public class LevelGrid
     {
         Vector2 screenPosition = camera.WorldToScreenPoint(currentPosition);
 
-        screenPosition.x = Mathf.RoundToInt(screenPosition.x / _columnSize) * _columnSize;
-        screenPosition.y = Mathf.RoundToInt(screenPosition.y / _rowSize) * _rowSize;
+        screenPosition.x = Mathf.RoundToInt(screenPosition.x / ColumnSize) * ColumnSize;
+        screenPosition.y = Mathf.RoundToInt(screenPosition.y / RowSize) * RowSize;
         
         return camera.ScreenToWorldPoint(screenPosition);
     }
