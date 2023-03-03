@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelGrid
@@ -21,9 +22,19 @@ public class LevelGrid
     public Vector2 Snap(Vector2 currentPosition, Camera camera)
     {
         Vector2 screenPosition = camera.WorldToScreenPoint(currentPosition);
+        
+        float newX = Mathf.RoundToInt(screenPosition.x / ColumnSize) * ColumnSize;
+        float newY = Mathf.RoundToInt(screenPosition.y / RowSize) * RowSize;
+        
+        // ReSharper disable once InvertIf
+        if (Math.Abs(screenPosition.x - newX) > double.Epsilon || Math.Abs(screenPosition.y - newY) > double.Epsilon)
+        {
+            screenPosition.x = Mathf.RoundToInt(screenPosition.x / ColumnSize) * ColumnSize;
+            screenPosition.y = Mathf.RoundToInt(screenPosition.y / RowSize) * RowSize;
+            
+            Debug.Log("I just snapped");
+        }
 
-        screenPosition.x = Mathf.RoundToInt(screenPosition.x / ColumnSize) * ColumnSize;
-        screenPosition.y = Mathf.RoundToInt(screenPosition.y / RowSize) * RowSize;
         
         return camera.ScreenToWorldPoint(screenPosition);
     }
