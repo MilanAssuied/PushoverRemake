@@ -9,6 +9,8 @@ public class DominoPhysics : MonoBehaviour
     private void Awake()
     {
         m_Camera = Camera.main;
+        if (m_Camera != null) m_Camera.transform.position = new Vector3(9, 5, -10);
+        m_Grid.DrawGrid();
     }
 
     private void Update()
