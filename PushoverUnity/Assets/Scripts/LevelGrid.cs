@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelGrid
@@ -26,10 +27,45 @@ public class LevelGrid
     
     public Vector2 Snap(Vector2 currentPosition)
     {
-        Vector2 closest = new Vector2(); 
+         
         var diffMemory = float.MaxValue;
         
-        foreach(var position in m_GridPoints)
+        var closestRow = 0;
+        var closestColumn = 0;
+        
+        for (var i = 0; i<m_GridPoints.GetLength(0); i++)
+        {
+            var diff = Math.Abs(currentPosition.x-m_GridPoints[i,0].x);
+            if (diff < diffMemory) 
+            {
+                closestRow = i;
+                diffMemory = diff;
+            }
+            else {
+                break;
+            }
+        }
+
+        diffMemory = float.MaxValue;
+        
+        for (var j =0; j<m_GridPoints.GetLength(1); j++)
+        {
+            var diff = Math.Abs(currentPosition.y-m_GridPoints[0,j].y);
+            if (diff < diffMemory) 
+            {
+                closestColumn = j;
+                diffMemory = diff;
+            }
+            else {
+                break;
+            }
+        }
+        
+        Debug.Log($"I snapped at ({closestRow}, {closestColumn})");
+        
+        return m_GridPoints[closestRow, closestColumn];
+        
+        /*foreach(var position in m_GridPoints)
         {
             var diff = (currentPosition-position).magnitude;
             if (diff < diffMemory)
@@ -41,9 +77,8 @@ public class LevelGrid
             {
                 break;
             }
-        }
-        Debug.Log("I snapped");
-        return closest;
+        }*/
+        
     }
     
     private Vector2 GetWorldPosition(int x, int y)
