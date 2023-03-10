@@ -1,18 +1,17 @@
-using System;
 using UnityEngine;
 
 public class LevelGrid
 {
        
-    private static readonly float MaxNumberOfRows = 7f;
-    private static readonly float MaxNumberOfColumns = 20f;
+    private static readonly int MaxNumberOfRows = 7;
+    private static readonly int MaxNumberOfColumns = 20;
     
     // ReSharper disable once PossibleLossOfFraction
     private static readonly float RowSize = 0.9f;
     // ReSharper disable once PossibleLossOfFraction
     private static readonly float ColumnSize = 1.41f;
     
-    public Vector2[,] gridPoints;
+    private readonly Vector2[,] m_GridPoints = new Vector2[MaxNumberOfColumns,MaxNumberOfRows]; //TODO: Invert rows and colums
     
     private static LevelGrid _instance;
     public static LevelGrid instance
@@ -30,7 +29,7 @@ public class LevelGrid
         Vector2 closest = new Vector2(); 
         var diffMemory = float.MaxValue;
         
-        foreach(var position in gridPoints)
+        foreach(var position in m_GridPoints)
         {
             var diff = (currentPosition-position).magnitude;
             if (diff < diffMemory)
@@ -43,6 +42,7 @@ public class LevelGrid
                 break;
             }
         }
+        Debug.Log("I snapped");
         return closest;
     }
     
@@ -57,7 +57,7 @@ public class LevelGrid
         {
             for(var j=0; j < MaxNumberOfRows; j++)
             {
-                gridPoints[i,j] = GetWorldPosition(i,j);
+                m_GridPoints[i,j] = GetWorldPosition(i,j);
             }
         }
     }
