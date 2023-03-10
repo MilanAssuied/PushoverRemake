@@ -25,6 +25,6 @@ public class DominoPhysics : MonoBehaviour
             Debug.Log("Right push");
         }
         
-        transform.position = m_Grid.Snap(transform.position, m_Camera);
+        transform.position = m_Grid.Snap(transform.position);
     }
 }
