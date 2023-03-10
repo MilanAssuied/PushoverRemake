@@ -12,6 +12,16 @@ public class DominoPhysics : MonoBehaviour
         m_Grid.DrawGrid();
     }
 
+    private void Start()
+    {
+        SnapAndOffsetDomino();
+    }
+    
+    private void SnapAndOffsetDomino()
+    {
+        transform.position = m_Grid.Snap(transform.position) + new Vector2(0, transform.localScale.y/2);
+    }
+
     private void Update()
     {
 
@@ -24,6 +34,6 @@ public class DominoPhysics : MonoBehaviour
             Debug.Log("Right push");
         }
         
-        transform.position = m_Grid.Snap(transform.position);
+        
     }
 }
